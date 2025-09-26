@@ -15,9 +15,13 @@ public class MethodEx4 {
             int option = scanner.nextInt();
 
             if (option == 1) {
-                balance = deposit(balance, scanner);
+                System.out.print("입금액을 입력하세요: ");
+                int amount = scanner.nextInt();
+                balance = deposit(balance, amount);
             } else if (option == 2) {
-                balance = withdraw(balance, scanner);
+                System.out.print("출금액을 입력하세요: ");
+                int amount = scanner.nextInt();
+                balance = withdraw(balance, amount);
             } else if (option == 3) {
                 System.out.println("현재 잔액: " + balance + "원");
             } else if (option == 4) {
@@ -25,24 +29,19 @@ public class MethodEx4 {
                 break;
             } else {
                 System.out.println("잘못된 접근입니다.");
-                break;
             }
         }
     }
 
-    public static int deposit(int money, Scanner scanner) {
-        System.out.print("입금액을 입력하세요: ");
-        int amount = scanner.nextInt();
-        money += amount;
-        System.out.println(amount + "원을 입금하였습니다. 현재 잔액: " + money + "원");
-        return money;
+    public static int deposit(int balance, int amount) {
+        balance += amount;
+        System.out.println(amount + "원을 입금하였습니다. 현재 잔액: " + balance + "원");
+        return balance;
     }
 
-    public static int withdraw(int balance, Scanner scanner) {
-        System.out.print("출금액을 입력하세요: ");
-        int amount = scanner.nextInt();
+    public static int withdraw(int balance, int amount) {
         if (balance < amount) {
-            System.out.println(amount + "를 출금하려고 했으나 잔액이 부족합니다.");
+            System.out.println(amount + "원을 출금하려고 했으나 잔액이 부족합니다.");
             return balance;
         }
         balance -= amount;
